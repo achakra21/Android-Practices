@@ -1,0 +1,216 @@
+Intent intent = new Intent(ActivityA.this,ActivityB.class);
+startActivity(intent)
+
+
+// the parameters are params ,progress , result
+MyAsyncTask extends AsyncTask<String,String,String> {
+
+@Override
+public void onpreExecute(){
+//your initialization happens here
+
+}
+
+@Override
+public void doInBackground(String... params) { //String array parameter
+
+//do you background tasks
+
+
+}
+
+@override
+public void onPublishProgress(String... progress){
+
+// publish you progress and Update in UI
+
+
+}
+
+@Override
+public void onPostExecute(String result){
+
+//publish the result
+
+}
+
+
+}
+
+you can call the Asynctask by calling  new MyAsyncTask().execute();// If you pass a parameter inside execute() that parameter will be passed inside
+the do in background method
+you can cancel the AsyncTask any time by callling new MyAsynctask().cancel(true);
+
+
+Simple example of creating a Activity
+##########################################
+
+public class MyActivity exends Activity {
+
+public void onCreate(Bundle savedInstanceSate){
+				super.onCreate(savedInstanceSate)
+				setContentView(R.layout.main)
+				
+				//adding a Fragment to activity
+				
+				if(savedInsatnceState == null) {
+				
+				getSupportFragmentManager().begeignTransacion().add(R.id.fragmentId,MYFragment.newInstance(),"").commit();
+				
+				}
+				
+				//start a service from activity
+				
+			Intent serviceIntent  = new Intent(this,Service.class);
+			startService(intent);
+			
+			//start a  intent service
+			Intent myIntentService = new Intent(this, MyIntentService.this);
+			startService(myIntentService);
+			
+			
+			// call the broadcast reciever from activity
+			
+			
+			Intent myRecieverIntent = new Intent();
+			
+			intent.setAction("com.myPackage.customIntent);
+			sendBroadcast(intent);
+
+}
+
+public void onStart(){
+super.onStart()
+
+}
+
+public void onResume(){
+super.onResume()
+
+}
+
+public void onPause(){
+super.onPause()
+
+}
+
+public void onStop(){
+super.onStop()
+
+}
+
+public void onDestory(){
+super.onDestory()
+
+}
+		
+}
+}
+
+Write down a simple fragmen class in Android
+############################################
+
+public class MyFragment extend Fragment {
+
+
+//create a static object shared across the activity when need to be added
+public static MyFragment newInstance() {
+
+
+retuen new MyFragment():
+
+}
+
+
+public View onCreateView(LayoutInflater layoutInflater,ViewGroup container,Bundle savedInsatnceState){
+
+
+return inflater.inflate(R.layout.my_frag,container,false);
+
+}
+
+}
+
+Create a start service
+#######################
+
+public myService extends Service{
+
+@Override
+public void onStartCommand(Intent intent,int flags, int startId) {    calls after the onStartService() get called
+
+
+
+
+}
+
+@Override
+public IBinder onBind(Intent intent) { // method get called on BindService() method get called from remote
+
+}
+
+
+
+}
+
+Simple example of an Intent Service
+#######################################
+
+//intent service runs on a worker thread
+
+public class myIntentService extends IntentService {
+
+		myIntentService() {
+		// initialize
+		}
+		
+		
+		@override
+		public void onHandelIntent(Intent intent){
+		
+		
+		}
+
+
+
+}
+
+//Simple example of an Broadcast Reciever
+
+public calass myReciever extens BroadcastReciever {
+
+@Override
+
+public void onRecieve(Context context,Intent intent) {
+
+Intent reciverIntent = new Intent();
+receiveIntent.setAction('com.package.CUSTOm_InTENT).sendBroadCast(intent);
+
+// here my broadcast reciever started 
+
+
+}
+
+}
+
+
+<receiver android:name="MyReceiver">
+         <intent-filter>
+            <action android:name="com.tutorialspoint.CUSTOM_INTENT">
+            </action>
+         </intent-filter>
+
+      </receiver>
+
+
+//broacast reciever ahs to be registerd in android manifest
+
+
+
+
+
+
+
+
+
+
